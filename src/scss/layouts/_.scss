@@ -1,0 +1,7 @@
+&.l-layout {
+    @import "layout.scss";
+}
+&.l-blank,
+&.l-404 {
+    @import "blank.scss";
+}

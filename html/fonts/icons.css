@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "icons";
+    src: url("./icons.eot?08f34667f7b656508995d705dcb9c577?#iefix") format("embedded-opentype"),
+url("./icons.woff2?08f34667f7b656508995d705dcb9c577") format("woff2"),
+url("./icons.woff?08f34667f7b656508995d705dcb9c577") format("woff"),
+url("./icons.ttf?08f34667f7b656508995d705dcb9c577") format("truetype"),
+url("./icons.svg?08f34667f7b656508995d705dcb9c577#icons") format("svg");
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-floppy-disk:before {
+    content: "\f101";
+}
