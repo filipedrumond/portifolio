@@ -12,10 +12,10 @@ const router = new Router({
     routes: [
         {
             path: '/',
-            name: 'Meus Animais',
+            name: 'index',
             component: Index,
             meta: {
-                title: 'BASE PROJECT VUE',
+                title: 'Home',
                 layout: 'l-layout',
                 freeAccess: true,
             },
@@ -30,6 +30,7 @@ const router = new Router({
         },
     ],
 });
+
 var bodyClass = require('./helpers/bodyClass');
 var prototype = Vue.prototype;
 router.beforeEach((to, from, next) => {
@@ -39,8 +40,9 @@ router.beforeEach((to, from, next) => {
 
     return next();
 });
+
 router.afterEach((to) => {
-    document.title = (to.meta.title || '') + ' BASE PROJECT';
+    document.title = (to.meta.title || '') + ' ';
     if (to.meta.layout) bodyClass($, to.meta.layout, to.fullPath);
     else bodyClass($, 'l-layout', to.fullPath);
 });

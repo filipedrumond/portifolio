@@ -1,6 +1,6 @@
 $primary: #e5f230;
 $secondary: #54d863;
-$theme: 1;
+$theme: 2;
 @import "normalize.scss";
 @import "variables.scss";
 @import "colors.scss";
@@ -17,6 +17,7 @@ $fa-font-path: "../../../node_modules/font-awesome/fonts";
 body {
     @import "layouts/_";
     @import "routes/_";
+    @import "components/typography";
 }
 * {
     margin: 0;

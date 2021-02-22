@@ -23,5 +23,6 @@ mix.copy(
 );
 
 mix.disableNotifications();
+
 mix.sass('src/scss/main.scss', 'html/build/css').sourceMaps(true, 'source-map');
-mix.js('src/main.js', 'html/build/js').sourceMaps(true, 'source-map');
+mix.js('src/main.js', 'html/build/js').vue().sourceMaps(true, 'source-map');

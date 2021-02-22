@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        Index
+        Index HERE XX y x
     </div>
 </template>
 
@@ -15,3 +15,5 @@ export default {
     components: {},
 };
 </script>
+<style lang="scss"></style>
+

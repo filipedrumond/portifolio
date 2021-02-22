@@ -39,5 +39,20 @@ $success: #5cb85c;
     $primary: #e5f230;
     $secondary: #54d863;
 }
+
+$theme-colors: ();
+$theme-colors: map-merge(
+  (
+    "primary": $primary,
+    "secondary" : $secondary,
+  ),
+  $theme-colors
+);
+@each $theme, $color in $theme-colors {
+  .text-#{$theme} {
+    color: $color !important;
+  }
+}
+
 // $complementPrimary: complement($primary);
 // $complementSecondary: complement($secondary);

@@ -5,18 +5,19 @@
   "author": "Filipe Drumond <filipe.dp@outlook.com>",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
+    "start-dev": "concurrently --kill-others \"npm run start\" \"livereload\"",
     "icons": "npm run clear-icons && npm run compile-icons && npm run generate-webfonts",
     "clear-icons": "node helpers/deleteOldFonts.js",
     "compile-icons": "node_modules/.bin/icon-font-generator src/assets/icons/*.svg -o ./html/fonts/",
     "generate-webfonts": "node helpers/webfonts.js",
     "dev": "npm run development",
-    "development": "node node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "development": "node node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "npm run development -- --watch",
     "watch-poll": "npm run watch -- --watch-poll",
     "hot": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,33 +27,38 @@
   "license": "ISC",
   "dependencies": {
     "@filipedp/simple_dialog": "^1.2.10",
-    "bootstrap": "^4.4.1",
-    "css-loader": "^3.2.0",
+    "acorn": "^8.0.5",
+    "acorn-jsx": "^5.3.1",
+    "bootstrap": "^4.6.0",
+    "css-loader": "^3.6.0",
     "dotenv": "^8.2.0",
     "express": "^4.16.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "jquery-mask-plugin": "^1.14.16",
-    "json-server": "^0.16.1",
+    "json-server": "^0.16.3",
     "laravel-mix": "^6.0.11",
+    "popper.js": "^1.16.1",
+    "postcss": "^8.2.6",
     "qrcode": "^1.4.4",
     "resolve-url-loader": "^3.1.2",
-    "sass": "^1.26.2",
+    "sass": "^1.32.8",
     "sass-loader": "^8.0.2",
-    "vue": "^2.6.10",
-    "vue-cookies": "^1.5.13",
-    "vue-loader": "^15.7.1",
+    "vhost": "^3.0.2",
+    "vue": "^2.6.12",
+    "vue-cookies": "^1.7.4",
+    "vue-loader": "^15.9.6",
     "vue-resource": "^1.5.1",
-    "vue-router": "^3.1.2",
+    "vue-router": "^3.5.1",
     "vue-session": "^1.0.0",
     "vue-sessionstorage": "^1.0.0",
     "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
-    "icon-font-generator": "^2.1.10",
-    "prettier": "^2.0.5"
+    "icon-font-generator": "^2.1.11",
+    "prettier": "^2.2.1"
   }
 }
