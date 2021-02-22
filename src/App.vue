@@ -1,5 +1,6 @@
 <template>
     <div id="app" class="">
+        <headerBar />
         <main>
             <router-view />
         </main>
@@ -8,7 +9,8 @@
 </template>
 
 <script>
-import footerBar from './vue/components/footerBar.vue';
+import footerBar from './vue/components/footerBar';
+import headerBar from './vue/components/headerBar';
 
 export default {
     name: 'App',
@@ -16,7 +18,7 @@ export default {
         return {};
     },
     created: function() {},
-    components: { footerBar }
+    components: { footerBar, headerBar }
 };
 </script>
 
