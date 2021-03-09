@@ -5,8 +5,9 @@
   "author": "Filipe Drumond <filipe.dp@outlook.com>",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "start-dev": "concurrently --kill-others \"npm run start\" \"livereload\"",
+    "start": "node app.js",
+    "json-server": "node db.server.js",
+    "start-dev": "concurrently --kill-others \"npm run start\" \"livereload\" \"json-server\"",
     "icons": "npm run clear-icons && npm run compile-icons && npm run generate-webfonts",
     "clear-icons": "node helpers/deleteOldFonts.js",
     "compile-icons": "node_modules/.bin/icon-font-generator src/assets/icons/*.svg -o ./html/fonts/",

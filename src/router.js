@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Index from './vue/Index.vue';
+import Index from './vue/Index';
+import LinkTree from './vue/LinkTree';
 
-import NotFound from './vue/error/NotFound.vue';
+import NotFound from './vue/error/NotFound';
 
 Vue.use(Router);
 const router = new Router({
@@ -20,6 +21,17 @@ const router = new Router({
                 freeAccess: true,
             },
             alias: ['/index', '/home'],
+        },
+        {
+            path: '/tree',
+            name: 'linkTree',
+            component: LinkTree,
+            meta: {
+                title: 'Links',
+                layout: 'l-blank',
+                freeAccess: true,
+            },
+            alias: ['/links', '/link-tree'],
         },
         {
             path: '**',
