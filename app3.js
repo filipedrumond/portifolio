@@ -41,8 +41,8 @@ var HOST = '';
 // SAFE_PORT = process.env.APLICATION_SAFE_PORT;
 
 var httpServer = http.createServer(app);
-httpServer.listen(80);
-console.log(`Running on \x1b[33mhttp://${HOST}:${80}\x1b[0m`);
+httpServer.listen(3000);
+console.log(`Running on \x1b[33mhttp://${HOST}:${3000}\x1b[0m`);
 // }
 
 // var fs = require('fs');
