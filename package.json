@@ -5,7 +5,7 @@
   "author": "Filipe Drumond <filipe.dp@outlook.com>",
   "main": "server.js",
   "scripts": {
-    "start": "npm install && node app.js",
+    "start": "npm install && node app2.js",
     "json-server": "node db.server.js",
     "start-dev": "concurrently --kill-others \"npm run start\" \"livereload\" \"json-server\"",
     "icons": "npm run clear-icons && npm run compile-icons && npm run generate-webfonts",
