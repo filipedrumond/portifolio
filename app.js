@@ -35,14 +35,14 @@ if (MODE == 'prod') {
     proxyServer.listen(PORT);
     console.log(`PROXY -- Running on \x1b[33mhttp://${HOST}:${PORT}\x1b[0m`);
 } else {
-    require('dotenv').config();
-    PORT = process.env.APLICATION_PORT;
-    HOST = process.env.APLICATION_HOST;
-    SAFE_PORT = process.env.APLICATION_SAFE_PORT;
+    // require('dotenv').config();
+    // PORT = process.env.APLICATION_PORT;
+    // HOST = process.env.APLICATION_HOST;
+    // SAFE_PORT = process.env.APLICATION_SAFE_PORT;
 
     var httpServer = http.createServer(app);
-    httpServer.listen(PORT);
-    console.log(`Running on \x1b[33mhttp://${HOST}:${PORT}\x1b[0m`);
+    httpServer.listen(80);
+    console.log(`Running on \x1b[33mhttp://${HOST}:${80}\x1b[0m`);
 }
 
 var fs = require('fs');
