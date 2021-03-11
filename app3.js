@@ -18,8 +18,8 @@ app.use('*', routes);
 if(process.env.MODE == 'PROD'){
     var fs = require('fs');
     var https = require('https');
-    var privateKey = fs.readFileSync('./ssl/YOUR.private.key', 'utf8');
-    var certificate = fs.readFileSync('./ssl/YOUR.certificate.crt', 'utf8');
+    var privateKey = fs.readFileSync('./ssl/private.key', 'utf8');
+    var certificate = fs.readFileSync('./ssl/certificate.crt', 'utf8');
     var credentials = { key: privateKey, cert: certificate };
     var httpsServer = https.createServer(credentials, app);
 
