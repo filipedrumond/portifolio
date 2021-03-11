@@ -12,8 +12,18 @@ app.use('/fonts', express.static('./html/fonts'));
 app.use('/node_modules', express.static('./html/node_modules'));
 app.use('/.well-known/pki-validation', express.static('./ssl'));
 
+app.use((req, res, next) => {
+    if ((req.headers['x-forwarded-proto'] || '').endsWith('http')) 
+        res.redirect(`https://${req.headers.host}${req.url}`);
+
+    else 
+        next();
+});
+
 /* NO ROUTES HERE TRATAMENTO PARA O VUE GERENCIAR MAS CUIDADO FUTURO PARA CASO DE POSTS OU TRATAMENTO DE FOTOS ETC */
 app.use('*', routes);
+
+
 
 var httpServer = http.createServer(app);
 if(process.env.MODE == 'PROD'){
@@ -25,7 +35,6 @@ if(process.env.MODE == 'PROD'){
     var httpsServer = https.createServer(credentials, app);
 
     httpsServer.listen(3000);
-    // httpServer.listen(3000);
     console.log(`Safe Runnning on \x1b[33mhttps://:${3000}\x1b[0m`);
 }
 else{
