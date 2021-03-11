@@ -1,7 +1,10 @@
 const mix = require('laravel-mix');
-mix.webpackConfig({
-    devtool: 'inline-source-map'
-});
+if(process.env.NODE_ENV === 'development'){
+    mix.webpackConfig({
+        devtool: 'inline-source-map'
+    });
+}
+
 mix.autoload({ jquery: ['$', 'window.jQuery'] });
 
 mix.options({
@@ -24,5 +27,10 @@ mix.copy(
 
 mix.disableNotifications();
 
-mix.sass('src/scss/main.scss', 'html/build/css').sourceMaps(true, 'source-map');
-mix.js('src/main.js', 'html/build/js').vue().sourceMaps(true, 'source-map');
+if(process.env.NODE_ENV === 'development'){
+    mix.sass('src/scss/main.scss', 'html/build/css').sourceMaps(true, 'source-map');
+    mix.js('src/main.js', 'html/build/js').vue().sourceMaps(true, 'source-map');
+}else{
+    mix.sass('src/scss/main.scss', 'html/build/css');
+    mix.js('src/main.js', 'html/build/js').vue();
+}
