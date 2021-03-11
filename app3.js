@@ -15,6 +15,7 @@ app.use('/.well-known/pki-validation', express.static('./ssl'));
 /* NO ROUTES HERE TRATAMENTO PARA O VUE GERENCIAR MAS CUIDADO FUTURO PARA CASO DE POSTS OU TRATAMENTO DE FOTOS ETC */
 app.use('*', routes);
 
+var httpServer = http.createServer(app);
 if(process.env.MODE == 'PROD'){
     var fs = require('fs');
     var https = require('https');
@@ -23,11 +24,11 @@ if(process.env.MODE == 'PROD'){
     var credentials = { key: privateKey, cert: certificate };
     var httpsServer = https.createServer(credentials, app);
 
-    httpsServer.listen(3000);
+    httpsServer.listen(443);
+    httpServer.listen(3000);
     console.log(`Safe Runnning on \x1b[33mhttps://:${3000}\x1b[0m`);
 }
 else{
-    var httpServer = http.createServer(app);
     httpServer.listen(3000);
     console.log(`Running on \x1b[33mhttp://:${3000}\x1b[0m`);
 }
