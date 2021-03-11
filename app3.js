@@ -24,8 +24,8 @@ if(process.env.MODE == 'PROD'){
     var credentials = { key: privateKey, cert: certificate };
     var httpsServer = https.createServer(credentials, app);
 
-    httpsServer.listen(443);
-    httpServer.listen(3000);
+    httpsServer.listen(3000);
+    // httpServer.listen(3000);
     console.log(`Safe Runnning on \x1b[33mhttps://:${3000}\x1b[0m`);
 }
 else{
