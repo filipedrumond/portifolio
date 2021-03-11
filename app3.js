@@ -5,6 +5,7 @@ var routes = require('./routes');
 var http = require('http');
 
 var app = express();
+var PORT = process.env.PORT || 3000;
 
 app.use('/build', express.static('./html/build'));
 app.use('/assets', express.static('./html/assets'));
@@ -26,52 +27,52 @@ app.use('*', routes);
 
 
 var httpServer = http.createServer(app);
-if(process.env.MODE == 'PROD'){
+httpServer.listen(PORT);
+console.log(`Running on \x1b[33mhttp://:${PORT}\x1b[0m`);
+
+/* if(process.env.MODE == 'PROD'){
     var fs = require('fs');
     var https = require('https');
     var privateKey = fs.readFileSync('./ssl/private.key', 'utf8');
     var certificate = fs.readFileSync('./ssl/certificate.crt', 'utf8');
     var credentials = { key: privateKey, cert: certificate };
     var httpsServer = https.createServer(credentials, app);
-
-    httpsServer.listen(3000);
-    console.log(`Safe Runnning on \x1b[33mhttps://:${3000}\x1b[0m`);
+    httpsServer.listen(PORT);
+    console.log(`Safe Runnning on \x1b[33mhttps://:${PORT}\x1b[0m`);
 }
 else{
-    httpServer.listen(3000);
-    console.log(`Running on \x1b[33mhttp://:${3000}\x1b[0m`);
 }
-// var SAFE_PORT = '';
-// if (MODE == 'prod') {
-//     require('dotenv').config({ path: './production.env' });
-//     PORT = process.env.APLICATION_PORT;
-//     HOST = process.env.APLICATION_HOST;
-//     SAFE_PORT = process.env.APLICATION_SAFE_PORT;
+var SAFE_PORT = '';
+if (MODE == 'prod') {
+    require('dotenv').config({ path: './production.env' });
+    PORT = process.env.APLICATION_PORT;
+    HOST = process.env.APLICATION_HOST;
+    SAFE_PORT = process.env.APLICATION_SAFE_PORT;
 
-//     var proxyRouter = express.Router();
-//     var proxy = express();
-//     proxyRouter.get('*', (req, res) => {
-//         res.redirect('https://' + req.headers.host + req.url);
-//     });
-//     proxy.use('*', proxyRouter);
-//     var proxyServer = http.createServer(proxy);
-//     proxyServer.listen(PORT);
-//     console.log(`PROXY -- Running on \x1b[33mhttp://${HOST}:${PORT}\x1b[0m`);
-// } else {
-// require('dotenv').config();
-// PORT = process.env.APLICATION_PORT;
-// HOST = process.env.APLICATION_HOST;
-// SAFE_PORT = process.env.APLICATION_SAFE_PORT;
+    var proxyRouter = express.Router();
+    var proxy = express();
+    proxyRouter.get('*', (req, res) => {
+        res.redirect('https://' + req.headers.host + req.url);
+    });
+    proxy.use('*', proxyRouter);
+    var proxyServer = http.createServer(proxy);
+    proxyServer.listen(PORT);
+    console.log(`PROXY -- Running on \x1b[33mhttp://${HOST}:${PORT}\x1b[0m`);
+} else {
+require('dotenv').config();
+PORT = process.env.APLICATION_PORT;
+HOST = process.env.APLICATION_HOST;
+SAFE_PORT = process.env.APLICATION_SAFE_PORT;
 
 
-// }
+}
 
-// var fs = require('fs');
-// var https = require('https');
-// var privateKey = fs.readFileSync('./ssl/YOUR.private.key', 'utf8');
-// var certificate = fs.readFileSync('./ssl/YOUR.certificate.crt', 'utf8');
-// var credentials = { key: privateKey, cert: certificate };
-// var httpsServer = https.createServer(credentials, app);
+var fs = require('fs');
+var https = require('https');
+var privateKey = fs.readFileSync('./ssl/YOUR.private.key', 'utf8');
+var certificate = fs.readFileSync('./ssl/YOUR.certificate.crt', 'utf8');
+var credentials = { key: privateKey, cert: certificate };
+var httpsServer = https.createServer(credentials, app);
 
-// httpsServer.listen(SAFE_PORT);
-// console.log(`Safe Runnning on \x1b[33mhttps://${HOST}:${SAFE_PORT}\x1b[0m`);
+httpsServer.listen(SAFE_PORT);
+console.log(`Safe Runnning on \x1b[33mhttps://${HOST}:${SAFE_PORT}\x1b[0m`); */
