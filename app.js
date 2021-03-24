@@ -4,6 +4,8 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 
+var torresmoBot = require('torresmo-bot')();
+
 var app = express();
 var PORT = process.env.PORT || 3000;
 
