@@ -3,10 +3,11 @@
 var express = require('express');
 var routes = require('./routes');
 var http = require('http');
+const mode = process.env.MODE || 'DEV';
 
 
-var torresmoBot = require('torresmo-bot');
-if(process.env.MODE == 'PROD'){
+if(mode == 'PROD'){
+    var torresmoBot = require('torresmo-bot');
     torresmoBot();
 }
 
@@ -36,7 +37,7 @@ var httpServer = http.createServer(app);
 httpServer.listen(PORT);
 console.log(`Running on \x1b[33mhttp://:${PORT}\x1b[0m`);
 
-/* if(process.env.MODE == 'PROD'){
+/* if(mode == 'PROD'){
     var fs = require('fs');
     var https = require('https');
     var privateKey = fs.readFileSync('./ssl/private.key', 'utf8');

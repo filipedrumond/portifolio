@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
-if(process.env.NODE_ENV === 'development'){
+const mode = process.env.MODE || 'DEV';
+if(mode == 'DEV'){
     mix.webpackConfig({
         devtool: 'inline-source-map'
     });
@@ -27,7 +28,7 @@ mix.copy(
 
 mix.disableNotifications();
 
-if(process.env.NODE_ENV === 'development'){
+if(mode == 'DEV'){
     mix.sass('src/scss/main.scss', 'html/build/css').sourceMaps(true, 'source-map');
     mix.js('src/main.js', 'html/build/js').vue().sourceMaps(true, 'source-map');
 }else{
