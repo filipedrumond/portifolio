@@ -38,6 +38,7 @@
             "telefon_contato": "3198809474",
             "endereco": {
                 "rua": "J",
+                "numero": "123",
                 "cep": "3245000",
                 "bairro": "riacho",
                 "cidade": "sarzedo"
