@@ -14,9 +14,15 @@ var LoginController = () => {
                 }
                 url += '&password=' + md5Pass;
 
-                console.log(self.apiUrl + '/users' + url);
-
                 return this.$http.get(self.apiUrl + '/users' + url);
+            },
+            getPessoa: function (id) {
+
+                let self = this;
+                let url = '?id='+id;
+
+                console.log(self.apiUrl + '/pessoas/' + url);
+                return this.$http.get(self.apiUrl + '/pessoas/' + url);
             },
         },
     };

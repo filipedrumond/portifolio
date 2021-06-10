@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Index from './vue/Index';
+import Pessoa from './vue/Pessoa';
 import Login from './vue/Login';
 import LinkTree from './vue/LinkTree';
 
@@ -33,6 +34,16 @@ const router = new Router({
                 freeAccess: true,
             },
             alias: ['/entrar'],
+        },
+        {
+            path: '/pessoa/:id',
+            name: 'pessoa',
+            component: Pessoa,
+            meta: {
+                title: 'Detalhes de Pessoa',
+                layout: 'l-layout',
+                freeAccess: true,
+            },
         },
         {
             path: '/tree',
