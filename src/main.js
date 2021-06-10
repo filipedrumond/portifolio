@@ -11,6 +11,8 @@ require('./helpers/collapseControl')();
 const loginModel = require('./vue/model/login.model');
 const QRCode = require('qrcode');
 
+
+
 import { SimpleAlerts } from '@filipedp/simple_dialog';
 import { SimpleConfirms } from '@filipedp/simple_dialog';
 
@@ -24,15 +26,18 @@ Vue.mixin({
             SimpleConfirms: SimpleConfirms,
             QRCode: QRCode,
             apiUrl:
-                window.location.origin == 'https://fdru.com.br'
+                window.location.origin == 'https://teste.fdru.com.br'
                     ? 'https://api.fdru.com.br'
-                    : window.location.origin + ':3000',
+                    : 'http://localhost'+ ':510',
         };
     },
 });
 
 var globalMixFilter = require('./vue/mix/filters.mix');
 Vue.mixin(globalMixFilter);
+
+var globalApiMethods = require('./vue/controllers/loginControler');
+Vue.mixin(globalApiMethods);
 
 Vue.config.productionTip = false;
 Vue.use(VueResource);

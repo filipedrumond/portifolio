@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Index from './vue/Index';
+import Login from './vue/Login';
 import LinkTree from './vue/LinkTree';
 
 import NotFound from './vue/error/NotFound';
@@ -21,6 +22,17 @@ const router = new Router({
                 freeAccess: true,
             },
             alias: ['/index', '/home'],
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login,
+            meta: {
+                title: 'Faça Login',
+                layout: 'l-login',
+                freeAccess: true,
+            },
+            alias: ['/entrar'],
         },
         {
             path: '/tree',
